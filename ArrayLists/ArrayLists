@@ -1,0 +1,42 @@
+package arraylists;
+
+import java.util.ArrayList;
+
+public class ArrayLists {
+
+    public static void main(String[] args) {
+
+        ArrayList<String> stingList = new ArrayList<String>(10);
+        ArrayList<Integer> intList = new ArrayList<Integer>(10);
+        stingList.add("A");        stingList.add("B");
+        stingList.add("C");        stingList.add("D");
+        stingList.add("E");        stingList.add("F");
+        stingList.add("G");        stingList.add("H");
+        stingList.add("I");        stingList.add("J");
+
+        intList.add(1);          intList.add(2);
+        intList.add(3);          intList.add(4);
+        intList.add(5);          intList.add(6);
+        intList.add(7);          intList.add(8);
+        intList.add(9);          intList.add(10);  
+        
+        boolean flag=false;
+        for(int i=0;i<intList.size();i++){
+            if (flag){if(i%2==1){intList.remove(i);
+            }else intList.remove(i);
+        }flag=!flag;
+        }
+        
+        flag = true;
+        for(int i=0;i<stingList.size();i++){
+            if(i%2==0){stingList.remove(i);
+            }else{
+                stingList.remove(i);
+            }
+            flag=!flag;
+        }
+        System.out.println("String array list elements: " + stingList);
+        System.out.println("Integer array list elements: " + intList);
+    }
+
+}
