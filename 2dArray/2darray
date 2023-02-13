@@ -1,0 +1,61 @@
+import java.util.Scanner;
+
+public class 2dArray {
+
+    public static void main(String[] args) {
+        int arr[][] = new int[3][4], i, j;
+        int sum = 0;
+        int rowsum = 0;
+        int colsum = 0;
+        Scanner sc = new Scanner(System.in);
+        for (i = 0; i < 3; i++) {
+            for (j = 0; j < 4; j++) {
+                System.out.print("Enter a value: ");
+                arr[i][j] = sc.nextInt();
+                sum += arr[i][j];
+            }
+        }
+        System.out.println("Array: ");
+        for (i = 0; i < 3; i++) {
+            for (j = 0; j < 4; j++) {
+                System.out.print(arr[i][j] + ",");
+            }
+            System.out.println("\b");
+        }
+        System.out.println("Array sum: " + sum);
+        for (i = 0; i < 3; i++) {
+            for (j = 0; j < 4; j++) {
+                rowsum += arr[i][j];
+            }
+            System.out.println("The sum of row " + (i + 1) + ": " + rowsum);
+            rowsum = 0;
+        }
+        int arr2[][] = new int[4][4], a, b, temp;
+        System.out.println("Enter 16 numbers: ");
+        for (a=0;a<4;a++) {
+            for (b=0;b<4;b++) {
+                arr2[a][b] = sc.nextInt();
+            }
+        }
+        for (a=0;a<4;a++) {
+            for (b=0;b<3;b++) {
+                if (arr2[a][b] < arr2[a][b+1]) {
+                    temp = arr2[a][b];
+                    arr2[a][b] = arr2[a][b+1];
+                    arr2[a][b+1] = temp;
+                }
+                if (arr2[a][b] < arr2[a+1][b]) {
+                    temp = arr2[a][b];
+                    arr2[a][b] = arr2[a+1][b];
+                    arr2[a+1][b] = temp;
+                }
+            }
+        }
+
+        for (a=0;a<4;a++) {
+            for (b=0;b<4;b++) {
+                System.out.print(arr2[a][b] + ',');
+            }
+        }
+    }
+}
