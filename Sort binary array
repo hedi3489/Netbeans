@@ -1,0 +1,39 @@
+public class SortingArray {
+    public static int[] SortStream(String stream){
+        int[] array = StringToArray(stream);
+        int zeros = 0;
+        for (int i = 0; i < array.length; i++) {
+            if(array[i]==0) zeros++;
+        }
+        for (int i = 0; i < array.length; i++) {
+            if(i<zeros){array[i] = 0;}
+            else{array[i]=1;}
+        }
+        return array;
+    }
+
+    public static int[] StringToArray(String string){
+        int[] result = new int[(string.length()/2)+1];
+        int ctr = 0;
+        for(int i = 0; i < string.length(); i+=2){
+            int a = string.charAt(i) - '0';
+            result[ctr] = a; ctr++;
+        }
+        return result;
+    }
+    
+    public static void main(String[] args) {
+        //Input:  { 1, 0, 1, 0, 1, 0, 0, 1 }
+        //Output: { 0, 0, 0, 0, 1, 1, 1, 1 }
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter stream:");
+        String stream = sc.nextLine();
+        
+        int[] array = SortStream(stream);
+        
+        for (int i : array) {
+            System.out.print(i+" ");
+        }
+    }   
+}
