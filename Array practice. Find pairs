@@ -1,0 +1,52 @@
+import java.util.Scanner;
+
+public class ArrayPractice {
+
+    public static String FindPair(int[] array, int target){
+        String answer = "";
+        for(int i = 0; i < (array.length/2)+1;i++){
+            int remain = target - array[i];
+            for (int j = i+1; j < array.length; j++) {
+                if(remain == array[j]){
+                    answer += "Pair found: " + array[i] + ", " + array[j] +"\n";
+                    break;
+                }
+                //The next block of code reduces time complexity at the cost of space complexity
+                //It is more effective when dealing with larger arrays as it searches for numbers on both sides
+                //In small arrays it would be a waste of space complexity.
+                if(remain == array[array.length-j]){
+                    answer += "Pair found: " + array[i] + ", " + array[array.length-j] +"\n";
+                    break;
+                }
+            }
+        }
+        return answer;
+    }
+    
+    //Method to turn the array given by the user(String) into an integer array.
+    public static int[] StringToArray(String string){
+        int[] result = new int[(string.length()/2)+1];
+        int ctr = 0;
+        for(int i = 0; i < string.length(); i+=2){
+            int a = string.charAt(i) - '0';
+            result[ctr] = a; ctr++;
+        }
+        return result;
+    }
+    
+    public static void main(String[] args) {
+        // TODO code application logic here
+//        example:
+//        nums = [8, 7, 2, 5, 3, 1]
+//        target = 10
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter array:");
+        String stringArray = sc.nextLine();
+        System.out.println("Enter targer:");
+        int target = sc.nextInt();
+        int[] array = StringToArray(stringArray);
+        
+        System.out.println(FindPair(array, target));
+    }
+}
